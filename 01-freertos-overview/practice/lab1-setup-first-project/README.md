@@ -219,21 +219,38 @@ idf.py build
 
 ## Checklist การทำงาน
 
-- [ ] ตรวจสอบ ESP-IDF environment สำเร็จ
-- [ ] สร้างโปรเจกต์ใหม่ได้
-- [ ] เข้าใจโครงสร้างโปรเจกต์
-- [ ] Build โปรเจกต์สำเร็จ
-- [ ] แก้ไขโค้ดและ build ใหม่ได้
-- [ ] เข้าใจไฟล์ CMakeLists.txt
-- [ ] ทำแบบฝึกหัดครบ
+- [x] ตรวจสอบ ESP-IDF environment สำเร็จ
+- [x] สร้างโปรเจกต์ใหม่ได้
+- [x] เข้าใจโครงสร้างโปรเจกต์
+- [x] Build โปรเจกต์สำเร็จ
+- [x] แก้ไขโค้ดและ build ใหม่ได้
+- [x] เข้าใจไฟล์ CMakeLists.txt
+- [x] ทำแบบฝึกหัดครบ
 
-## คำถามทบทวหน
+## คำถามทบทวน
 
 1. ไฟล์ใดบ้างที่จำเป็นสำหรับโปรเจกต์ ESP-IDF ขั้นต่ำ?
+   - CMakeLists.txt (root)
+   - main/CMakeLists.txt
+   - main/hello_esp32.c
+
 2. ความแตกต่างระหว่าง `hello_esp32.bin` และ `hello_esp32.elf` คืออะไร?
+   - `hello_esp32.bin`: ไฟล์ binary ที่ใช้ flash ลงอุปกรณ์ ESP32
+   - `hello_esp32.elf`: ไฟล์ ELF ที่มีข้อมูล debug และ symbol สำหรับการพัฒนา
+
 3. คำสั่ง `idf.py set-target` ทำอะไร?
+   - กำหนดชิปเป้าหมายสำหรับโปรเจกต์ เช่น esp32
+
 4. โฟลเดอร์ `build/` มีไฟล์อะไรบ้าง?
+   - bootloader/
+   - partition_table/
+   - hello_esp32.bin
+   - hello_esp32.elf
+   - flash_args
+
 5. การใช้ `vTaskDelay()` แทน `delay()` มีความสำคัญอย่างไร?
+   - `vTaskDelay()`: ฟังก์ชันของ FreeRTOS ที่ทำให้ task หยุดชั่วคราวโดยไม่บล็อก scheduler ทำให้ multitasking ทำงานได้
+   - `delay()`: อาจเป็นฟังก์ชัน blocking ที่หยุดทั้งระบบ ไม่เหมาะกับ FreeRTOS
 
 ## บทสรุป
 
